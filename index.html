@@ -1,0 +1,321 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>黑龙江高考志愿辅助软件 2026 优化版下载</title>
+  <meta name="description" content="面向黑龙江 2026 高考报考的本地志愿辅助软件，内置官方一分一段表、投档线、冲稳保垫推荐和趋势分析。">
+  <style>
+    :root {
+      --bg: #f4f7fb;
+      --panel: #ffffff;
+      --ink: #172033;
+      --muted: #5f6b7a;
+      --line: #d8e0eb;
+      --blue: #1f5f99;
+      --blue-dark: #174875;
+      --green: #0f766e;
+      --orange: #b45309;
+      --shadow: 0 18px 48px rgba(20, 34, 55, 0.10);
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      font-family: "Microsoft YaHei", "PingFang SC", system-ui, sans-serif;
+      color: var(--ink);
+      background: var(--bg);
+      line-height: 1.6;
+    }
+
+    a { color: inherit; }
+
+    .hero {
+      min-height: 92vh;
+      display: grid;
+      align-items: center;
+      border-bottom: 1px solid var(--line);
+      background:
+        linear-gradient(115deg, rgba(247,250,255,0.96) 0%, rgba(247,250,255,0.86) 48%, rgba(237,247,244,0.78) 100%),
+        url("preview.png") center right / min(920px, 62vw) auto no-repeat;
+    }
+
+    .wrap {
+      width: min(1180px, calc(100% - 40px));
+      margin: 0 auto;
+    }
+
+    .hero-inner {
+      width: min(640px, 100%);
+      padding: 58px 0 80px;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      gap: 8px;
+      align-items: center;
+      padding: 6px 10px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: rgba(255,255,255,0.82);
+      color: var(--blue-dark);
+      font-size: 13px;
+      font-weight: 700;
+    }
+
+    h1 {
+      margin: 20px 0 14px;
+      font-size: clamp(34px, 6vw, 60px);
+      line-height: 1.08;
+      letter-spacing: 0;
+    }
+
+    .lead {
+      max-width: 580px;
+      margin: 0 0 26px;
+      color: var(--muted);
+      font-size: 18px;
+    }
+
+    .actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      align-items: center;
+      margin-bottom: 22px;
+    }
+
+    .download {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 50px;
+      padding: 0 20px;
+      border-radius: 8px;
+      background: var(--blue);
+      color: #fff;
+      text-decoration: none;
+      font-weight: 800;
+      box-shadow: 0 10px 24px rgba(31, 95, 153, 0.22);
+    }
+
+    .download:hover { background: var(--blue-dark); }
+
+    .ghost {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 50px;
+      padding: 0 16px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: rgba(255,255,255,0.88);
+      color: #24364b;
+      text-decoration: none;
+      font-weight: 700;
+    }
+
+    .meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    .pill {
+      padding: 5px 9px;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      background: rgba(255,255,255,0.78);
+    }
+
+    section {
+      padding: 42px 0;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 16px;
+    }
+
+    .card {
+      min-height: 150px;
+      padding: 20px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: var(--panel);
+      box-shadow: var(--shadow);
+    }
+
+    .card h2, .card h3 {
+      margin: 0 0 10px;
+      font-size: 18px;
+      line-height: 1.35;
+    }
+
+    .card p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .band {
+      border-top: 1px solid var(--line);
+      border-bottom: 1px solid var(--line);
+      background: #fff;
+    }
+
+    .steps {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 12px;
+      counter-reset: step;
+    }
+
+    .step {
+      min-height: 128px;
+      padding: 18px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: #fbfcff;
+      counter-increment: step;
+    }
+
+    .step::before {
+      content: counter(step);
+      display: inline-grid;
+      place-items: center;
+      width: 28px;
+      height: 28px;
+      margin-bottom: 10px;
+      border-radius: 999px;
+      background: #eaf2fb;
+      color: var(--blue-dark);
+      font-weight: 800;
+    }
+
+    .step b {
+      display: block;
+      margin-bottom: 4px;
+    }
+
+    .step span {
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .notice {
+      padding: 18px 20px;
+      border-left: 4px solid var(--orange);
+      border-radius: 8px;
+      background: #fff7ed;
+      color: #7c2d12;
+      font-size: 14px;
+    }
+
+    footer {
+      padding: 30px 0 42px;
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    @media (max-width: 920px) {
+      .hero {
+        min-height: auto;
+        background:
+          linear-gradient(180deg, rgba(247,250,255,0.98), rgba(247,250,255,0.92)),
+          url("preview.png") center bottom / 92vw auto no-repeat;
+      }
+
+      .hero-inner {
+        padding-bottom: min(58vw, 360px);
+      }
+
+      .grid, .steps {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+  <main class="hero">
+    <div class="wrap">
+      <div class="hero-inner">
+        <span class="eyebrow">黑龙江 · 2026 高考报考辅助</span>
+        <h1>黑龙江高考志愿辅助软件</h1>
+        <p class="lead">给家长和考生使用的本地版工具：输入选科、分数或位次，查看冲稳保垫建议、院校线趋势、专业组趋势和官方数据来源。</p>
+        <div class="actions">
+          <a class="download" href="hlj-gaokao-advisor-2026.zip" download>下载 Windows 便携版</a>
+          <a class="ghost" href="#how">查看使用方法</a>
+        </div>
+        <div class="meta">
+          <span class="pill">约 40.8 MB</span>
+          <span class="pill">无需安装</span>
+          <span class="pill">内置 SQLite 数据库</span>
+          <span class="pill">本地运行，不上传个人信息</span>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <section>
+    <div class="wrap grid">
+      <article class="card">
+        <h2>面向 2026 报考</h2>
+        <p>2026 一分一段表发布前，软件会使用最新官方一分一段表估算位次，并明确标注使用的数据年份。</p>
+      </article>
+      <article class="card">
+        <h2>趋势分析</h2>
+        <p>展示院校线和专业组历年分数、位次走势，辅助判断升温、降温和平稳，不只看单年分数。</p>
+      </article>
+      <article class="card">
+        <h2>冲稳保垫</h2>
+        <p>按概率模型分层推荐，并把极低概率结果单独放置，减少无效信息干扰。</p>
+      </article>
+    </div>
+  </section>
+
+  <section class="band" id="how">
+    <div class="wrap">
+      <div class="steps">
+        <div class="step"><b>下载压缩包</b><span>点击页面上方按钮，下载 `hlj-gaokao-advisor-2026.zip`。</span></div>
+        <div class="step"><b>解压文件</b><span>解压到任意文件夹，建议不要放在系统临时目录。</span></div>
+        <div class="step"><b>运行软件</b><span>打开 `HljGaokaoAdvisor.exe`，软件会自动启动本地网页。</span></div>
+        <div class="step"><b>输入条件</b><span>选择物理/历史、再选科目、分数或位次，生成推荐并查看趋势。</span></div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap grid">
+      <article class="card">
+        <h3>数据口径</h3>
+        <p>已接入黑龙江官方一分一段表、2024-2025 普通本科批平行志愿投档线，以及已整理的专科批相关数据。</p>
+      </article>
+      <article class="card">
+        <h3>适合谁用</h3>
+        <p>适合黑龙江 3+1+2 考生、家长、升学咨询老师，用于初筛院校和观察趋势。</p>
+      </article>
+      <article class="card">
+        <h3>本地安全</h3>
+        <p>软件在电脑本地运行，数据存放在随包数据库中，输入的分数和位次不会上传到服务器。</p>
+      </article>
+    </div>
+  </section>
+
+  <section class="band">
+    <div class="wrap">
+      <div class="notice">
+        本工具用于志愿填报前的辅助分析，不替代招生章程、官方招生计划、体检限制、单科要求、专项资格和最终报考决策。正式填报前请以黑龙江省招生考试院和高校官方发布信息为准。
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="wrap">黑龙江高考志愿辅助软件 2026 优化版 · 静态下载页</div>
+  </footer>
+</body>
+</html>
